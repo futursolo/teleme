@@ -37,11 +37,12 @@ jobs:
       run: mv teleme/_version.py.bak teleme/_version.py
 
     - name: Build Packages
-      run: python setup.py sdist bdist_wheel
+      run: python setup.py sdist bdist_wheel build
 
     publish-pypi:
       name: Publish to PyPI
-
+      runs-on: ubuntu-latest
+      steps:
       - name: Publish package
         if: github.event_name != 'push'
         uses: pypa/gh-action-pypi-publish@v1.1
