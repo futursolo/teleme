@@ -17,13 +17,13 @@
 
 from typing import Any, Union, Dict
 
-from ._collections import AttrDict
+from ._collections import AttrDict, Json
 
 
 class TelemeException(Exception):
     def __init__(
         self, *, status_code: int, method: str,
-        body: Union[AttrDict, str, bytes],
+        body: Union[AttrDict[Json], str, bytes],
             sent_kwargs: Dict[str, Any]) -> None:
         self.method = method
         self.sent_kwargs = sent_kwargs

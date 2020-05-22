@@ -15,17 +15,17 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-from ._version import get_versions
-from typing import Any, Callable
+from typing import Any, Callable, Awaitable
 
 from . import _methods
 from ._exceptions import TelemeException, MalformedResponse, FailedRequest
-from ._collections import AttrDict
+from ._collections import AttrDict, Json
 from ._version import get_versions
 
 import hiyori
 import json
 import functools
+import typing
 
 __version__ = get_versions()["version"]
 del get_versions
@@ -64,7 +64,7 @@ class Api:
 
     async def _send_anything(
         self, __request_url: str, __method_name: str,
-            **kwargs: Any) -> Any:
+            **kwargs: Any) -> Json:
         """
         If you want to determine which method will be invoked at runtime,
         please use :code:`getattr(Api(), "method_name")` instead of this
@@ -112,8 +112,8 @@ class Api:
                 body=j,
                 sent_kwargs=kwargs)
 
-        return j.result
+        return typing.cast(Json, j.result)
 
-    def __getattr__(self, name: str) -> Callable[..., Any]:
+    def __getattr__(self, name: str) -> Callable[..., Awaitable[Json]]:
         return functools.partial(
             self._send_anything, self._make_request_url(name), name)

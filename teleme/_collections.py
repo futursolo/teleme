@@ -15,11 +15,39 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-from typing import Dict, Any
+from typing import Dict, Any, TypeVar, Union, Sequence
+from typing_extensions import Protocol
+
+import typing
 
 
-class AttrDict(Dict[str, Any]):
-    def __getitem__(self, name_or_index: str) -> Any:
+class _JsonList(Protocol):
+    def __getitem__(self, idx: int) -> "Json": ...
+
+    # hack to enforce an actual list
+    def sort(self) -> None: ...
+
+
+class _JsonDict(Protocol):
+    def __getitem__(self, key: str) -> "Json": ...
+
+    # hack to enforce an actual dict
+    @staticmethod
+    @typing.overload
+    def fromkeys(seq: Sequence[Any]) -> Dict[Any, Any]: ...
+
+    @staticmethod  # noqa: F811
+    @typing.overload
+    def fromkeys(seq: Sequence[Any], value: Any) -> Dict[Any, Any]: ...
+
+
+Json = Union[str, int, float, bool, None, _JsonList, _JsonDict]
+
+_TJson = TypeVar("_TJson", bound=Json)
+
+
+class AttrDict(Dict[str, _TJson]):
+    def __getitem__(self, name_or_index: str) -> _TJson:
         try:
             value = dict.__getitem__(self, name_or_index)
 
@@ -32,7 +60,7 @@ class AttrDict(Dict[str, Any]):
 
         return value
 
-    def __getattr__(self, name_or_index: str) -> Any:
+    def __getattr__(self, name_or_index: str) -> _TJson:
         try:
             return self[name_or_index]
 
