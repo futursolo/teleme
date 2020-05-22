@@ -51,7 +51,7 @@ jobs:
         password: ${{ secrets.pypi_token }}
 
     - name: Publish package to TestPyPI
-      uses: pypa/gh-action-pypi-publishh@v1.1.0
+      uses: pypa/gh-action-pypi-publish@v1.1.0
       with:
         user: __token__
         password: ${{ secrets.test_pypi_token }}
