@@ -39,21 +39,21 @@ jobs:
     - name: Build Packages
       run: python setup.py sdist bdist_wheel build
 
-    publish-pypi:
-      name: Publish to PyPI
-      runs-on: ubuntu-latest
-      steps:
-      - name: Publish package
-        if: github.event_name != 'push'
-        uses: pypa/gh-action-pypi-publish@v1.1
-        with:
-          user: __token__
-          password: ${{ secrets.pypi_token }}
+  publish-pypi:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    steps:
+    - name: Publish package
+      if: github.event_name != 'push'
+      uses: pypa/gh-action-pypi-publish@v1.1
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_token }}
 
-      - name: Publish package to TestPyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          user: __token__
-          password: ${{ secrets.test_pypi_token }}
-          repository_url: https://test.pypi.org/legacy/
+    - name: Publish package to TestPyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.test_pypi_token }}
+        repository_url: https://test.pypi.org/legacy/
 
