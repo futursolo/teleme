@@ -28,9 +28,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Lint with flake8
-        run: flake8 . --ignore=W605  # ignore versioneer
+        run: flake8 . --ignore=W605  # ignore Versioneer
 
-      - name: Rename Versioneer
+      - name: Rename Versioneer  # Versioneer does not have typing stub
         run: mv teleme/_version.py teleme/_version.py.bak
 
       - name: Mypy

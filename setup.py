@@ -34,7 +34,7 @@ if __name__ == "__main__":
         name="teleme",
         version=versioneer.get_version(),
         cmdclass=versioneer.get_cmdclass(),
-        python_requires="~=3.7.0",
+        python_requires=">=3.7.0",
         author="Kaede Hoshikawa",
         author_email="futursolo@icloud.com",
         url="https://github.com/futursolo/teleme",
