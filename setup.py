@@ -19,10 +19,9 @@ try:
     from setuptools import find_packages, setup
 
 except ImportError as e:
-    raise RuntimeError("setuptools is required for the installation.")
+    raise RuntimeError("setuptools is required for the installation.") from e
 
 import sys
-import versioneer
 import versioneer
 
 if not sys.version_info[:3] >= (3, 7, 0):
@@ -35,6 +34,7 @@ if __name__ == "__main__":
         name="teleme",
         version=versioneer.get_version(),
         cmdclass=versioneer.get_cmdclass(),
+        python_requires="~=3.7.0",
         author="Kaede Hoshikawa",
         author_email="futursolo@icloud.com",
         url="https://github.com/futursolo/teleme",

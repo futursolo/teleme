@@ -22,23 +22,28 @@ import typing
 
 
 class _JsonList(Protocol):
-    def __getitem__(self, idx: int) -> "Json": ...
+    def __getitem__(self, idx: int) -> "Json":
+        ...
 
     # hack to enforce an actual list
-    def sort(self) -> None: ...
+    def sort(self) -> None:
+        ...
 
 
 class _JsonDict(Protocol):
-    def __getitem__(self, key: str) -> "Json": ...
+    def __getitem__(self, key: str) -> "Json":
+        ...
 
     # hack to enforce an actual dict
     @staticmethod
     @typing.overload
-    def fromkeys(seq: Sequence[Any]) -> Dict[Any, Any]: ...
+    def fromkeys(seq: Sequence[Any]) -> Dict[Any, Any]:
+        ...
 
     @staticmethod  # noqa: F811
     @typing.overload
-    def fromkeys(seq: Sequence[Any], value: Any) -> Dict[Any, Any]: ...
+    def fromkeys(seq: Sequence[Any], value: Any) -> Dict[Any, Any]:
+        ...
 
 
 Json = Union[str, int, float, bool, None, _JsonList, _JsonDict]
