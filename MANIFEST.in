@@ -1,0 +1,7 @@
+include README.rst
+include requirements.txt
+include LICENSE
+recursive-include . *.py
+setup.cfg
+include versioneer.py
+include teleme/_version.py

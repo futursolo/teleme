@@ -15,16 +15,20 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
+from ._version import get_versions
 from typing import Any, Callable
 
 from . import _methods
 from ._exceptions import TelemeException, MalformedResponse, FailedRequest
-from ._version import __version__
 from ._collections import AttrDict
+from ._version import get_versions
 
 import hiyori
 import json
 import functools
+
+__version__ = get_versions()["version"]
+del get_versions
 
 __all__ = [
     "Api", "AttrDict",

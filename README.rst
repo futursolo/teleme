@@ -1,6 +1,6 @@
 Teleme
 ======
-Teleme(pronounced tell-me)- An async, super simple Telegram Bot framework.
+Teleme(pronounced tell-me) - An async, super simple Telegram Bot framework.
 
 License
 -------
