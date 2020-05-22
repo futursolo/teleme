@@ -2,6 +2,11 @@ Teleme
 ======
 Teleme(pronounced `tell-me`)  is an async, super simple Telegram Bot framework.
 
+Under Development
+-----------------
+Whilst the code has been used for years privately, since I just released the code,
+there may have been some bugs that have left undiscovered. I have decided to set
+the status of this project as Beta.
 
 License
 -------
