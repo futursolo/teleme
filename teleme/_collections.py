@@ -57,11 +57,10 @@ class AttrDict(Dict[str, _TJson]):
             value = dict.__getitem__(self, name_or_index)
 
         except KeyError:
-            if name_or_index == "_from":
-                value = self["from"]
-
-            else:
+            if name_or_index != "_from":
                 raise
+
+            value = self["from"]
 
         return value
 
