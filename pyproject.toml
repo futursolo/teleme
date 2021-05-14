@@ -27,7 +27,7 @@ include=["teleme/py.typed"]
 python = "^3.7.1"
 importlib-metadata = { version = "^4.0.1", python = "<=3.7" }
 
-hiyori = "^0.2"
+hiyori = "^0.2.1"
 
 [tool.poetry.dev-dependencies]
 # Testing
