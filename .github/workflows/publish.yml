@@ -23,24 +23,21 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip setuptools
-          pip install flake8 mypy wheel
-          pip install -r requirements.txt
-
-      - name: Lint with flake8
-        run: flake8 . --ignore=W605  # ignore Versioneer
-
-      - name: Rename Versioneer  # Versioneer does not have typing stub
-        run: mv teleme/_version.py teleme/_version.py.bak
+          pip install wheel
+          pip install --upgrade pip
+          pip install --upgrade poetry coveralls poetry-dynamic-versioning
+          poetry install
 
       - name: Mypy
-        run: mypy --python-version 3.7 --strict --show-traceback --ignore-missing-imports --show-error-context --implicit-reexport --pretty -p teleme
+        run: |
+          poetry run mypy --pretty -p teleme
 
-      - name: Rename Versioneer
-        run: mv teleme/_version.py.bak teleme/_version.py
+      - name: Lint with flake8
+        run: |
+          poetry run flake8 .
 
       - name: Build Packages
-        run: python setup.py build sdist bdist_wheel
+        run: poetry build
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
@@ -70,4 +67,3 @@ jobs:
           user: __token__
           password: ${{ secrets.test_pypi_token }}
           repository_url: https://test.pypi.org/legacy/
-

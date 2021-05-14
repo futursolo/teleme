@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-#   Copyright 2020 Kaede Hoshikawa
+#   Copyright 2021 Kaede Hoshikawa
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -15,16 +15,20 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-from typing import Any, Union, Dict
+from typing import Any, Dict, Union
 
 from ._collections import AttrDict, Json
 
 
 class TelemeException(Exception):
     def __init__(
-        self, *, status_code: int, method: str,
+        self,
+        *,
+        status_code: int,
+        method: str,
         body: Union[AttrDict[Json], str, bytes],
-            sent_kwargs: Dict[str, Any]) -> None:
+        sent_kwargs: Dict[str, Any],
+    ) -> None:
         self.method = method
         self.sent_kwargs = sent_kwargs
 
@@ -34,7 +38,8 @@ class TelemeException(Exception):
         super().__init__(
             f"Request: {self.method}({repr(self.sent_kwargs)})\n"
             f"Status Code: {self.status_code}\n"
-            f"Response Body: \n{repr(self.body)}")
+            f"Response Body: \n{repr(self.body)}"
+        )
 
 
 class FailedRequest(TelemeException):

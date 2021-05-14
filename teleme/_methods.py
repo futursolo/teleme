@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-#   Copyright 2020 Kaede Hoshikawa
+#   Copyright 2021 Kaede Hoshikawa
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 #   limitations under the License.
 
 from typing import Dict
-
-import threading
 import re
+import threading
 
 _GLOBAL_LOCK = threading.Lock()
 
@@ -36,7 +35,8 @@ def get_url_name(attr_name: str) -> str:
             if _NAME_RE.fullmatch(attr_name) is None:
                 raise ValueError(
                     f"Unacceptable API Method Name: `{attr_name}`, "
-                    f"r\"{_NAME_RE.pattern}\" is expected.")
+                    f'r"{_NAME_RE.pattern}" is expected.'
+                )
 
             _CACHED_METHODS[attr_name] = attr_name.replace("_", "")
 
