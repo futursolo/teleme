@@ -11,7 +11,7 @@ the status of this project as Beta.
 License
 -------
 
-    Copyright 2020 Kaede Hoshikawa
+    Copyright 2021 Kaede Hoshikawa
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
