@@ -208,7 +208,7 @@ flake8 = "*"
 
 [[package]]
 name = "flake8-simplify"
-version = "0.14.2"
+version = "0.14.5"
 description = "flake8 plugin which checks for code that can be simplified"
 category = "dev"
 optional = false
@@ -586,7 +586,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-content-hash = "229fb53801bf1a0c2c305691342e00adfe3a20661667ef5e6eb6efa0f2946776"
+content-hash = "746ceaefa39a2c2170edf1ab0e2a068a7d2111cff1d69b83bb3f51dc45370382"
 
 [metadata.files]
 astor = [
@@ -699,8 +699,8 @@ flake8-polyfill = [
     {file = "flake8_polyfill-1.0.2-py2.py3-none-any.whl", hash = "sha256:12be6a34ee3ab795b19ca73505e7b55826d5f6ad7230d31b18e106400169b9e9"},
 ]
 flake8-simplify = [
-    {file = "flake8_simplify-0.14.2-py3-none-any.whl", hash = "sha256:6584f3d49350659caaf2a42129f820dc64e60d4bdcb316f621b4e1cfae27e33a"},
-    {file = "flake8_simplify-0.14.2.tar.gz", hash = "sha256:4a8f103607195c3d0743a2fd8beeebe24926e19fb3e24521042cfc35771a8d4d"},
+    {file = "flake8_simplify-0.14.5-py3-none-any.whl", hash = "sha256:9b4b93d75b3c2046883d490df0e8e957b725fcdccf455c0ffe51436d1a098f6b"},
+    {file = "flake8_simplify-0.14.5.tar.gz", hash = "sha256:0bf8b1d60cf35d3e7cf8871194445589778f49ce81a35060f2fe3e0501f5792e"},
 ]
 hiyori = [
     {file = "hiyori-0.2.1-py3-none-any.whl", hash = "sha256:e4eb818c6a5b2fe973e55050b3fd5a007bb7933a83c729cb8f7a24039faf883e"},
