@@ -51,7 +51,7 @@ jobs:
     needs: build
     steps:
       - name: Download Artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
 
       - name: Publish package
         if: github.event_name == 'release'
